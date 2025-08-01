@@ -2,6 +2,59 @@
   "expo": {
     "name": "qr-code-generator",
     "slug": "qr-code-generator",
-    "platforms": ["web"]
-  }
+            "version": "0.1.0",
+            "orientation": "default",
+            "icon": "./assets/images/icon.png",
+            "notification": {
+                "icon": "./assets/images/notification-icon.png"
+            },
+            "updates": {
+                "enabled": true,
+                "url": "https://u.expo.dev/" + customerConfig.easUpdateId,
+                "fallbackToCacheTimeout": 10 * 1000
+            },
+            "userInterfaceStyle": "automatic",
+            "assetBundlePatterns": [
+                "**/*"
+            ],
+            "web": {
+                "bundler": "metro",
+                "output": "static",
+                "favicon": "./assets/images/favicon.png"
+            },
+            "plugins": [
+                "expo-router",
+                "expo-location",
+                "expo-notifications",
+                [
+                    "expo-document-picker",
+                    { "iCloudContainerEnvironment": "Production" }
+                ],
+                [
+                    "expo-image-picker",
+                    {
+                        "photosPermission": "custom photos permission",
+                        "cameraPermission": "Allow $(PRODUCT_NAME) to open the camera",
+                        "//": "Disables the microphone permission",
+                        "microphonePermission": false
+                    }
+                ],
+                "expo-localization",
+                "expo-asset",
+                "expo-font"
+            ],
+            "experiments": {
+                "typedRoutes": true,
+                "baseUrl": "/qr-code-generator"
+            },
+            "extra": {
+                "router": {
+                    "origin": false
+                },
+            },
+            "owner": "baumgartner-software",
+            "runtimeVersion": {
+                "policy": "appVersion"
+            }
+        }
 }
