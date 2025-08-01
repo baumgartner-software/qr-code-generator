@@ -1,0 +1,7 @@
+{
+  "expo": {
+    "name": "qr-code-generator",
+    "slug": "qr-code-generator",
+    "platforms": ["web"]
+  }
+}
