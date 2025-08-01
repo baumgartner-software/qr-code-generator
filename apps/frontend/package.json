@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "expo start",
-    "web": "expo start --web"
+    "web": "expo start --web",
+    "predeploy": "expo export -p web",
+    "deploy": "gh-pages --nojekyll -d dist",
+    "deploy:gh:pages": "yarn run predeploy && yarn run deploy"
+    
   },
   "dependencies": {
     "@expo/metro-runtime": "~4.0.1",
