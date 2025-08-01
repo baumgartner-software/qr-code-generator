@@ -20,7 +20,6 @@
             "plugins": [
                 "expo-router",
                 "expo-location",
-                "expo-notifications",
                 [
                     "expo-document-picker",
                     { "iCloudContainerEnvironment": "Production" }
