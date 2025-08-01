@@ -19,7 +19,6 @@
             },
             "plugins": [
                 "expo-router",
-                "expo-location",
                 [
                     "expo-document-picker",
                     { "iCloudContainerEnvironment": "Production" }
