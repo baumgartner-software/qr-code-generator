@@ -8,11 +8,6 @@
             "notification": {
                 "icon": "./assets/images/notification-icon.png"
             },
-            "updates": {
-                "enabled": true,
-                "url": "https://u.expo.dev/" + customerConfig.easUpdateId,
-                "fallbackToCacheTimeout": 10 * 1000
-            },
             "userInterfaceStyle": "automatic",
             "assetBundlePatterns": [
                 "**/*"
