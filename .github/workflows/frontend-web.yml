@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
     paths:
-      - 'apps/frontend/app/**'
+      - 'apps/frontend/**'
       - 'packages/common/**'
       - '.github/workflows/**'
       - 'package.json'
