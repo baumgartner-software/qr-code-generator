@@ -25,6 +25,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: 📦 Install dependencies
+        working-directory: ./apps/frontend/app
         run: npm install
         shell: bash
 
