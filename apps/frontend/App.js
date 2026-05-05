@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { View, TextInput, Button } from 'react-native';
+import React, { useState, useRef } from 'react';
+import { View, TextInput, Button, Platform } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import QRCode from 'react-native-qrcode-svg';
 
@@ -12,6 +12,7 @@ export default function App() {
   const [value, setValue] = useState('');
   const [logo, setLogo] = useState(null);
   const [color, setColor] = useState('#000000');
+  const svgRef = useRef(null);
 
   const isValidUrl = (url) => /^https?:\/\/.+/.test(url);
 
@@ -19,6 +20,18 @@ export default function App() {
     setValue(text);
     setLogo(logoUrl && isValidUrl(logoUrl) ? { uri: logoUrl } : null);
     setColor(isValidHexColor(colorInput) ? colorInput : '#000000');
+  };
+
+  const handleDownloadPng = () => {
+    if (!svgRef.current) return;
+    svgRef.current.toDataURL((dataURL) => {
+      if (Platform.OS === 'web') {
+        const link = document.createElement('a');
+        link.href = `data:image/png;base64,${dataURL}`;
+        link.download = 'qrcode.png';
+        link.click();
+      }
+    });
   };
 
   return (
@@ -48,7 +61,7 @@ export default function App() {
       />
       <Button title="Generate QR" onPress={handleGenerate} />
       {value ? (
-        <View style={{ marginTop: 20 }}>
+        <View style={{ marginTop: 20, alignItems: 'center' }}>
           <QRCode
             value={value}
             size={200}
@@ -58,7 +71,13 @@ export default function App() {
             logoBackgroundColor="white"
             logoMargin={2}
             logoBorderRadius={4}
+            getRef={(ref) => (svgRef.current = ref)}
           />
+          <View style={{ marginTop: 12 }}>
+            {Platform.OS === 'web' && (
+              <Button title="Download PNG" onPress={handleDownloadPng} />
+            )}
+          </View>
         </View>
       ) : null}
       <StatusBar style="auto" />
