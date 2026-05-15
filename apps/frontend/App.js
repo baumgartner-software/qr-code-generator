@@ -65,6 +65,7 @@ export default function App() {
           <QRCode
             value={value}
             size={200}
+            quietZone={0}
             color={color}
             logo={logo}
             logoSize={40}
